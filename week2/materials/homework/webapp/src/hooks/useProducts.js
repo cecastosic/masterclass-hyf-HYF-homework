@@ -47,7 +47,7 @@ function useProducts() {
   const removeProduct = (product) => {
     setCart(cart.filter((item) => item.id != product.id));
   };
-console.log(cart)
+
   const calculateSum = () => {
       return cart.reduce((acc, value) => {
         return acc += Number(value.price)

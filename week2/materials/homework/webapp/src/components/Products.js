@@ -7,16 +7,14 @@ function Products() {
     return !cart.find((item) => item.id === product.id);
   };
 
-  console.log(sum)
   return (
     <div>
-      <div className="cart">Total sum in the cart: {sum} DKK</div>
-      <div className="row">
+      <div className="row align-items-start">
         {products.map((product) => {
           return (
-            <div className="card col-md-4" key={product.id}>
+            <div className="card col-3 m-2" key={product.id}>
               <div className="text-center">
-                <img style={{ width: "400px" }} src={product.imageURL} />
+                <img style={{ width: "250px" }} src={product.imageURL} />
               </div>
               <div className="card-body">
                 <h2>{product.name}</h2>
@@ -49,9 +47,8 @@ function Products() {
         })}
       </div>
       <form>
+        <p className="mt-4 p-2 bg-secondary w-" style={{width: "100%", color: "#fff"}}>You will be charged: <strong>{sum} DKK</strong></p>
         <div className="form-group mt-4 col-md-4">
-          <p className="mt-4">You will be charged: ?</p>
-
           <label htmlFor="exampleInputEmail1">Email address</label>
           <input
             type="email"
@@ -64,7 +61,7 @@ function Products() {
             We'll never share your email with anyone else.
           </small>
         </div>
-        <button type="submit" className="btn btn-primary mt-3">
+        <button type="submit" className="btn btn-primary mt-3" onClick={() => {}}>
           Buy now
         </button>
       </form>
