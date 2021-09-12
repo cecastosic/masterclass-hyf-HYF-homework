@@ -1,15 +1,16 @@
 import useProducts from "../hooks/useProducts";
 
 function Products() {
-  const { products, cart, addProduct, removeProduct } = useProducts();
+  const { products, cart, addProduct, removeProduct, sum } = useProducts();
 
   const isInCart = (product) => {
     return !cart.find((item) => item.id === product.id);
   };
 
+  console.log(sum)
   return (
     <div>
-      
+      <div className="cart">Total sum in the cart: {sum} DKK</div>
       <div className="row">
         {products.map((product) => {
           return (
