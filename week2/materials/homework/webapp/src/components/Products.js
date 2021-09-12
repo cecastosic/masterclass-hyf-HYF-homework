@@ -9,6 +9,7 @@ function Products() {
 
   return (
     <div>
+      
       <div className="row">
         {products.map((product) => {
           return (
