@@ -45,7 +45,7 @@ function useProducts() {
   };
 
   const removeProduct = (product) => {
-    setCart(cart.filter((item) => item.id != product.id));
+    setCart(cart.filter((item) => item.id !== product.id));
   };
 
   const calculateSum = () => {

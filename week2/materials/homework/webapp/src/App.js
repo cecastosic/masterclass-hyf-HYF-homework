@@ -3,12 +3,17 @@ import Header from "./components/Header";
 import useNotifications from "./hooks/useNotification";
 
 function App() {
-  const { notifications } = useNotifications();
+  const { notification } = useNotifications();
 
+  console.log(notification);
   return (
     <div className="container">
       <Header />
-      <h1 className="text-white">Good Green Groceries</h1>
+      {notification && notification.length && (
+        <div className="alert alert-primary" role="alert">
+          {notification}
+        </div>
+      )}
       <Products />
     </div>
   );
