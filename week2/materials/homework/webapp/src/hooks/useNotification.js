@@ -14,7 +14,7 @@ function useNotifications() {
       : setNotification("Your cart is empty");
     setTimeout(() => {
       setNotification("");
-    }, 5000);
+    }, 10000);
   };
 
   return { notification, createNotification };
