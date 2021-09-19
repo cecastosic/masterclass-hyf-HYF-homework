@@ -6,7 +6,6 @@ import { NotificationsContext } from "./context/notifications";
 function App() {
   const [notification, setNotification] = useState("");
 
-  console.log(notification);
   return (
     <NotificationsContext.Provider value={{ notification, setNotification }}>
       <div className="container">
