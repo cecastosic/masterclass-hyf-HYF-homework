@@ -1,17 +1,20 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
+import { NotificationsContext } from "../context/notifications";
 
-function useNotifications(text) {
-  const [notification, setNotification] = useState("");
+function useNotifications() {
+  const { notification, setNotification } = useContext(NotificationsContext);
 
   const createNotification = (text, sum) => {
-    // hint: use setTimeout
-    sum > 0 ? setNotification(text) : setNotification("Your cart is empty");
-    // setTimeout(() => {
-    //   if (text !== "") {
-    //     //alert(text);
-    //     setNotifications(text);
-    //   }
-    //   }, 500)
+    sum > 0
+      ? setTimeout(() => {
+          setNotification(
+            `Your order with the total sum of ${sum} DKK has been made. The invoice will be sent to ${text}.`
+          );
+        }, 500)
+      : setNotification("Your cart is empty");
+    setTimeout(() => {
+      setNotification("");
+    }, 5000);
   };
 
   return { notification, createNotification };

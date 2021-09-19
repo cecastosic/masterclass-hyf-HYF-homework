@@ -89,7 +89,7 @@ function Products() {
             We'll never share your email with anyone else.
           </small>
         </div>
-        <button type="submit" className="btn btn-primary mt-3">
+        <button type="submit" className="btn btn-primary mt-3 mb-3">
           Buy now
         </button>
       </form>
