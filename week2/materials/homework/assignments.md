@@ -22,6 +22,12 @@ Figure out and write down the price per month of storing 51TB on S3.
 
 Price: `1.172$`
 
+Explanation: `1 TB = 1000GB, the price per month for the first 50TB is $0,023 per GB, and for the next 450TB is $0,022 per GB`
+
+Calculation: `50000 * $0,023 + 1000 * $0,022 = $1.172`
+
+url: `https://aws.amazon.com/s3/pricing/`
+
 Total size of your website: `492.9 KB`
 
 **Assignment 7:**
