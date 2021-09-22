@@ -1,16 +1,23 @@
+import { useState } from "react";
 import Products from "./components/Products";
 import Header from "./components/Header";
-import useNotifications from "./hooks/useNotification";
+import { NotificationsContext } from "./context/notifications";
 
 function App() {
-  const { notifications } = useNotifications();
+  const [notification, setNotification] = useState("");
 
   return (
-    <div className="container">
-      <Header />
-      <h1 className="text-white">Good Green Groceries</h1>
-      <Products />
-    </div>
+    <NotificationsContext.Provider value={{ notification, setNotification }}>
+      <div className="container">
+        <Header />
+        {notification && notification.length && (
+          <div className="alert alert-primary" role="alert">
+            {notification}
+          </div>
+        )}
+        <Products />
+      </div>
+    </NotificationsContext.Provider>
   );
 }
 

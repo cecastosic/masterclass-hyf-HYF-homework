@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const productsData = [
   {
@@ -37,6 +37,7 @@ let initialProducts = productsData.map((item) => {
 function useProducts() {
   const [products] = useState(initialProducts);
   const [cart, setCart] = useState([]);
+  const [sum, setSum] = useState(0);
 
   const addProduct = (product) => {
     let newCart = cart.concat(product);
@@ -44,10 +45,21 @@ function useProducts() {
   };
 
   const removeProduct = (product) => {
-    setCart(cart.filter((item) => item.id != product.id));
+    setCart(cart.filter((item) => item.id !== product.id));
   };
 
-  return { products, cart, addProduct, removeProduct };
+  const calculateSum = () => {
+      return cart.reduce((acc, value) => {
+        return acc += Number(value.price)
+      },
+      0
+  )};
+  
+  useEffect(() => {
+    setSum(calculateSum());
+  }, [cart])
+
+  return { products, cart, addProduct, removeProduct, sum };
 }
 
 export default useProducts;
