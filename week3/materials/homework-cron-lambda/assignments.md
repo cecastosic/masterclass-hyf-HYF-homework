@@ -8,12 +8,12 @@ doc: `https://docs.aws.amazon.com/cli/latest/reference/lambda/list-functions.htm
 
 **Assignment 2:**
 
-value: `?`
+value: `AWS::Lambda::Function`
 
-doc: `?`
+doc: `https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/aws-resource-lambda-function.html`
 
 **Assignment 3:**
-rubbish string: `?`
+rubbish string: `"Ifmmp-!IZG\""%`
 
 **Assignment 4:**
-total count: `?`
+total count: `1`
