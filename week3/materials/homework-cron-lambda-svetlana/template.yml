@@ -31,5 +31,7 @@ Resources:
           Type: Schedule
           Properties:
             Schedule: cron(0 * * * ? *)
+      Policies:
+        - CloudWatchReadOnlyAccess
       MemorySize: 128
       Timeout: 100
