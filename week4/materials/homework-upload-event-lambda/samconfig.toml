@@ -1,0 +1,11 @@
+version = 0.1
+[default]
+[default.deploy]
+[default.deploy.parameters]
+stack_name = "week4-lambda-s3-scanner-svetlana"
+s3_bucket = "aws-sam-cli-managed-default-samclisourcebucket-1fh54iz3nan0g"
+s3_prefix = "week4-lambda-s3-scanner-svetlana"
+region = "us-east-1"
+capabilities = "CAPABILITY_IAM"
+parameter_overrides = "AppBucketName=\"week4-lambda-s3-scanner-svetlana\""
+image_repositories = []
