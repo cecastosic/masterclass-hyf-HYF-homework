@@ -1,12 +1,12 @@
 const dynamodb = require("aws-sdk/clients/dynamodb");
 const docClient = new dynamodb.DocumentClient();
 
-exports.getAllItemsHandler = async (event) => {
+exports.getAllProductsHandler = async (event) => {
   // All log statements are written to CloudWatch
   console.info("received:", event);
 
   var params = {
-    TableName: "SubscriptionsSvetlana",
+    TableName: "good-green-groceries-products",
   };
   const data = await docClient.scan(params).promise();
   const items = data.Items;
