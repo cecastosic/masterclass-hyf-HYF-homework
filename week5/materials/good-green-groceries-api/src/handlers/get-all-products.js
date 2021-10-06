@@ -6,7 +6,7 @@ exports.getAllProductsHandler = async (event) => {
   console.info("received:", event);
 
   var params = {
-    TableName: "good-green-groceries-products",
+    TableName: "GoodGreenGroceriesProducts",
   };
   const data = await docClient.scan(params).promise();
   const items = data.Items;
