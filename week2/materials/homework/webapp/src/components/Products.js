@@ -1,6 +1,7 @@
 import { useState } from "react";
 import useNotifications from "../hooks/useNotification";
 import useProducts from "../hooks/useProducts";
+import { useFetch } from "../hooks/useFetch";
 
 function Products() {
   const { products, cart, addProduct, removeProduct, sum } = useProducts();

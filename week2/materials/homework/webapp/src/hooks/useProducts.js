@@ -1,43 +1,20 @@
 import { useState, useEffect } from "react";
-
-const productsData = [
-  {
-    id: 1,
-    name: "Fruits",
-    imageURL:
-      "https://www.kirbysproduce.com/wp-content/uploads/2020/04/produce-box.jpg",
-    description: "Wonderful fruits from all over the world",
-    price: "50",
-    currency: "DKK",
-  },
-  {
-    id: 2,
-    name: "Vegetables",
-    imageURL:
-      "https://www.kirbysproduce.com/wp-content/uploads/2020/04/produce-box.jpg",
-    description: "Wonderful vegetables from all over the world",
-    price: "50",
-    currency: "DKK",
-  },
-  {
-    id: 3,
-    name: "Juice Box",
-    imageURL:
-      "https://www.kirbysproduce.com/wp-content/uploads/2020/04/produce-box.jpg",
-    description: "Great box for your juicer",
-    price: "50",
-    currency: "DKK",
-  },
-];
-
-let initialProducts = productsData.map((item) => {
-  return { ...item, selected: false };
-});
+import { useFetch } from "../hooks/useFetch";
 
 function useProducts() {
-  const [products] = useState(initialProducts);
+  const { data: productsData } = useFetch(`/products`);
+  const [products, setProducts] = useState([]);
   const [cart, setCart] = useState([]);
   const [sum, setSum] = useState(0);
+
+  useEffect(() => {
+    productsData &&
+      setProducts(
+        productsData.map((item) => {
+          return { ...item, selected: false };
+        })
+      );
+  }, [productsData]);
 
   const addProduct = (product) => {
     let newCart = cart.concat(product);
@@ -49,15 +26,14 @@ function useProducts() {
   };
 
   const calculateSum = () => {
-      return cart.reduce((acc, value) => {
-        return acc += Number(value.price)
-      },
-      0
-  )};
-  
+    return cart.reduce((acc, value) => {
+      return (acc += Number(value.price));
+    }, 0);
+  };
+
   useEffect(() => {
     setSum(calculateSum());
-  }, [cart])
+  }, [cart]);
 
   return { products, cart, addProduct, removeProduct, sum };
 }

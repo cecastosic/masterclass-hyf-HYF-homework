@@ -7,7 +7,19 @@ Parameters:
   GoodGreenGroceriesProducts:
     Type: String
 
+Globals:
+  Api:
+    Cors:
+      AllowOrigin: "'*'"
+      AllowHeaders: "'*'"
+      AllowMethods: "'*'"
+
 Resources:
+  MyApi:
+    Type: AWS::Serverless::Api
+    Properties:
+      StageName: Prod
+
   getAllItemsFunction:
     Type: AWS::Serverless::Function
     Properties:
@@ -28,6 +40,7 @@ Resources:
           Properties:
             Path: /subscriptions
             Method: GET
+            RestApiId: !Ref MyApi
 
   # This is a Lambda function config associated with the source code: put-item.js
   putItemFunction:
@@ -52,6 +65,7 @@ Resources:
           Properties:
             Path: /subscription
             Method: POST
+            RestApiId: !Ref MyApi
 
   # This is a Lambda function config associated with the source code: get-all-products.js
   getAllProductsFunction:
@@ -74,6 +88,7 @@ Resources:
           Properties:
             Path: /products
             Method: GET
+            RestApiId: !Ref MyApi
 
   # This is a Lambda function config associated with the source code: put-item.js
   putItemProductFunction:
@@ -98,6 +113,7 @@ Resources:
           Properties:
             Path: /product
             Method: POST
+            RestApiId: !Ref MyApi
 
   SubscriptionsTable:
     Type: AWS::Serverless::SimpleTable
@@ -114,8 +130,3 @@ Resources:
       PrimaryKey:
         Name: id
         Type: String
-
-Outputs:
-  WebEndpoint:
-    Description: "API Gateway endpoint URL for Prod stage"
-    Value: !Sub "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
