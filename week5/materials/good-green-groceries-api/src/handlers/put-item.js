@@ -31,7 +31,7 @@ exports.putItemHandler = async (event) => {
       id: id,
       productID: productID,
       email: email,
-      createdOn: new Date().toLocaleString(),
+      //createdOn: new Date().toLocaleString(),
     },
   };
 
@@ -44,7 +44,7 @@ exports.putItemHandler = async (event) => {
       "Access-Control-Allow-Headers":
         "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with",
       "Access-Control-Allow-Origin": "*", // Allow from anywhere
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE,PATCH", // Allow only GET request
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE,PATCH",
     },
     body: JSON.stringify(body),
   };

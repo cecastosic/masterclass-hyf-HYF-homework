@@ -1,6 +1,6 @@
 import useSwr from "swr";
 
-const baseUrl = "https://6hwwi0vg7j.execute-api.us-east-1.amazonaws.com/Prod";
+export const baseUrl = "https://6hwwi0vg7j.execute-api.us-east-1.amazonaws.com/Prod";
 
 export const useFetch = (
   path, 
