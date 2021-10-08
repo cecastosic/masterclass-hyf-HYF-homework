@@ -8,7 +8,7 @@ function App() {
 
   return (
     <NotificationsContext.Provider value={{ notification, setNotification }}>
-      <div className="container">
+      <div className="container-lg">
         <Header />
         {notification && notification.length && (
           <div className="alert alert-primary" role="alert">

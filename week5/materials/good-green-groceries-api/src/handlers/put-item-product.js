@@ -10,7 +10,7 @@ const tableName = process.env.SUBSCRIPTIONS_TABLE;
 /**
  * A simple example includes a HTTP post method to add one item to a DynamoDB table.
  */
-exports.putItemHandler = async (event) => {
+exports.putItemProductHandler = async (event) => {
   if (event.httpMethod !== "POST") {
     throw new Error(
       `postMethod only accepts POST method, you tried: ${event.httpMethod} method.`
@@ -21,17 +21,19 @@ exports.putItemHandler = async (event) => {
 
   // Get id and name from the body of the request
   const body = JSON.parse(event.body);
-  const { id, productID, email } = body;
+  const { id, name, imageURL, description, price } = body;
 
   // Creates a new item, or replaces an old item with a new item
   // https://docs.aws.amazon.com/AWSJavaScriptSDK/latest/AWS/DynamoDB/DocumentClient.html#put-property
   var params = {
-    TableName: "SubscriptionsSvetlana",
+    TableName: "GoodGreenGroceriesProducts",
     Item: {
       id: id,
-      productID: productID,
-      email: email,
-      //createdOn: new Date().toLocaleString(),
+      name: name,
+      imageURL: imageURL,
+      description: description,
+      price: price,
+      currency: "DKK",
     },
   };
 
@@ -44,7 +46,7 @@ exports.putItemHandler = async (event) => {
       "Access-Control-Allow-Headers":
         "Content-Type,X-Amz-Date,Authorization,X-Api-Key,x-requested-with",
       "Access-Control-Allow-Origin": "*", // Allow from anywhere
-      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE,PATCH",
+      "Access-Control-Allow-Methods": "OPTIONS,POST,GET,PUT,DELETE,PATCH", 
     },
     body: JSON.stringify(body),
   };
