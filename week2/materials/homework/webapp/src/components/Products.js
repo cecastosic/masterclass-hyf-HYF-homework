@@ -22,8 +22,8 @@ function Products() {
   };
 
   return (
-    <div className="position-relative">
-      <div style={{ width: "70%" }}>
+    <div className="position-relative container-fluid">
+      <div style={{ width: "60%" }}>
         <div className="row align-items-start">
           {products.map((product) => {
             return (
@@ -31,7 +31,7 @@ function Products() {
                 <div
                   className="card"
                   key={product.id}
-                  style={{ width: "18rem" }}
+                  style={{ width: "20rem" }}
                 >
                   <div className="card-body">
                     <div className="text-center">
@@ -87,7 +87,7 @@ function Products() {
       </div>
       <div
         className="position-fixed"
-        style={{ width: "30%", right: "5rem", top: "5rem" }}
+        style={{ width: "30%", left: "60%", top: "5rem" }}
       >
         <form
           onSubmit={(e) => {
@@ -118,30 +118,30 @@ function Products() {
               required
             />
             {emailRequired && (
-              <small className="form-text text-danger d-inline-block">
+              <small className="form-text text-danger d-block">
                 Please enter your email
               </small>
             )}
             {errorSubscribed && (
-              <small className="form-text text-danger d-inline-block">
+              <small className="form-text text-danger d-block">
                 {errorSubscribed}
               </small>
             )}
             {successData.id && (
-              <small className="form-text text-success d-inline-block">
+              <small className="form-text text-success d-block">
                 {`${successData.email} successfully subscribed to ${productName(
                   successData.productID
                 )}`}
               </small>
             )}
             {error && (
-              <small className="form-text text-danger d-inline-block">
+              <small className="form-text text-danger d-block">
                 {error}
               </small>
             )}
             <small
               id="emailHelp"
-              className="form-text text-muted d-inline-block"
+              className="form-text text-muted d-block"
             >
               We'll never share your email with anyone else.
             </small>

@@ -11,6 +11,12 @@ function useSubscriptions() {
     subscriptionsData && setSubscriptions(subscriptionsData);
   }, [subscriptionsData]);
 
+
+  useEffect(() => {
+    setTimeout(() => { setSuccessData([]) }, 15000);
+  }, [successData]);
+
+
   const maxIdSubscription = Math.max(...subscriptions.map(s => s.id));
 
   const isSubscribed = (product, email) => {
