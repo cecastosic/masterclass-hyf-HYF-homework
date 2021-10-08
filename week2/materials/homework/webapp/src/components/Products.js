@@ -87,7 +87,7 @@ function Products() {
       </div>
       <div
         className="position-fixed"
-        style={{ width: "30%", left: "60%", top: "5rem" }}
+        style={{ width: "30%", left: "60%", top: "10rem" }}
       >
         <form
           onSubmit={(e) => {
